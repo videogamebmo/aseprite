@@ -109,3 +109,9 @@ jobs:
         export ASEPRITE=$PWD/build/bin/aseprite
         cd tests
         $XVFB bash run-tests.sh
+    - name: Subir artefacto (binarios compilados)
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: aseprite-${{ matrix.os }}-${{ matrix.build_type }}-${{ matrix.ui }}-${{ matrix.scripting }}
+        path: build/bin/
